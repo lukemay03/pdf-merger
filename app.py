@@ -1,6 +1,7 @@
 from flask import Flask, request, send_file
 from PyPDF2 import PdfMerger
 import io
+import os
 
 app = Flask(__name__)
 
@@ -16,4 +17,6 @@ def merge_pdfs():
     output.seek(0)
     return send_file(output, download_name="merged.pdf", as_attachment=True)
 
-app.run()
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
