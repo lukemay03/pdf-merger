@@ -15,3 +15,5 @@ def merge_pdfs():
     merger.close()
     output.seek(0)
     return send_file(output, download_name="merged.pdf", as_attachment=True)
+
+app.run()
